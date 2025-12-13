@@ -1,0 +1,741 @@
+/* File: App.css (Final and Complete Version with New Sections and Hero Fix) */
+
+/* --- Variables and Base Reset --- */
+:root {
+  --primary-dark: #070e1b;   
+  --secondary-dark: #0e182e; 
+  --accent-yellow: #ffc700;  
+  --accent-blue: #007bff;    
+  --text-light: #cbd5e1;     
+  --text-heading: #ffffff;
+  --max-width: 1300px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif; 
+}
+
+body {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  min-height: 100vh;
+  line-height: 1.6;
+  background-image: radial-gradient(circle at 50% 50%, rgba(14, 24, 46, 0.3) 0%, transparent 80%);
+  background-attachment: fixed;
+}
+
+.app-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+}
+
+.cursor-highlight {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 199, 0, 0.3) 0%, rgba(255, 199, 0, 0.1) 50%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+  opacity: 0.8;
+}
+
+section {
+  padding: 100px 40px;
+  position: relative;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-heading);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 60px;
+    color: var(--accent-yellow);
+}
+
+/* --- Buttons & CTAs --- */
+.cta-buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.primary-btn {
+  background-image: linear-gradient(45deg, #ffc700, #ffeb3b);
+  color: var(--primary-dark);
+  box-shadow: 0 5px 20px rgba(255, 199, 0, 0.4);
+}
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 199, 0, 0.6);
+  background: linear-gradient(45deg, #ffeb3b, #ffc700);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--accent-yellow);
+  border: 2px solid var(--accent-yellow);
+}
+.secondary-btn:hover {
+  background-color: rgba(255, 199, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.large-btn {
+  padding: 15px 35px;
+  font-size: 18px;
+}
+
+/* --- 1. HERO SECTION (FIXED) --- */
+.hero {
+  text-align: center;
+  padding: 150px 40px 100px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 10%, var(--secondary-dark), transparent);
+}
+.hero-content {
+    max-width: 1000px;
+}
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: center;
+}
+.hero p {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: #a0aec0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.hero-icon {
+    color: var(--accent-yellow);
+    font-size: 80%;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.sliding-text-container {
+    display: inline-block;
+    position: relative;
+    color: var(--accent-yellow); 
+    /* FIX: Reserve required vertical space */
+    height: 1.1em; 
+    overflow: hidden;
+    vertical-align: top;
+    line-height: 1.1;
+    /* FIX: Ensure enough horizontal space for the longest text */
+    min-width: 450px; 
+    text-align: left;
+}
+.sliding-text-item {
+    font-size: 1em;
+    font-weight: 700;
+    white-space: nowrap;
+    position: absolute; 
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: inherit;
+}
+
+/* --- 2. SHORT COMPANY INTRO --- */
+.intro {
+    padding: 50px 40px;
+    text-align: center;
+}
+.intro-text {
+    font-size: 20px;
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--secondary-dark);
+    padding: 30px;
+    border-radius: 12px;
+}
+.intro-text strong {
+    color: var(--accent-yellow);
+    font-weight: 600;
+}
+
+/* --- 3. METRICS / ACHIEVEMENTS SECTION --- */
+.metrics-wrapper {
+    padding-top: 0;
+    padding-bottom: 50px;
+}
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  background-color: var(--secondary-dark);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.metric-card {
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.metric-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 199, 0, 0.2);
+}
+.metric-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+.metric-card h2 {
+  font-size: 48px;
+  color: var(--accent-yellow);
+  margin-bottom: 5px;
+}
+.metric-card p {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- 4. VALUE PROPOSITION --- */
+.value-proposition {
+    padding: 60px 40px;
+}
+.value-prop-grid {
+    display: flex;
+    justify-content: center;
+}
+.value-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 40px;
+    max-width: 900px;
+}
+.section-list-item {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    color: var(--text-heading);
+    background: var(--secondary-dark);
+    padding: 15px 25px;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-yellow);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.list-icon {
+    color: var(--accent-yellow);
+    font-size: 20px;
+    margin-right: 12px;
+}
+
+
+/* --- 5. IT STAFFING & ROLES PROVIDED --- */
+.staffing-roles {
+    background-color: #16243a;
+}
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.role-category-card {
+    background: var(--primary-dark);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+.role-category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 199, 0, 0.2);
+    border-color: rgba(255, 199, 0, 0.3);
+}
+.role-category-card h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+.category-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+    display: block;
+}
+.role-category-card ul {
+    list-style: none;
+    padding: 0;
+}
+.role-category-card li {
+    font-size: 16px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+.role-arrow {
+    color: var(--accent-yellow);
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+/* --- 6. OFFSHORE ENGINEERING TEAMS --- */
+.offshore-teams {
+    text-align: center;
+}
+.offshore-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.offshore-text p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+.offshore-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* --- 7. GLOBAL TALENT MOBILITY --- */
+.mobility {
+    background-color: var(--secondary-dark);
+}
+.mobility-content {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.mobility-destinations, .mobility-opportunities {
+    flex: 1;
+    min-width: 300px;
+    padding: 30px;
+    border-radius: 12px;
+    background: var(--primary-dark);
+}
+.mobility-destinations h3, .mobility-opportunities h3 {
+    color: var(--accent-yellow);
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+.destinations-list, .opportunities-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- 8. POSH COMPLIANCE & L&D --- */
+.compliance-ld {
+    padding: 80px 40px;
+}
+.compliance-ld-grid {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.compliance-card, .ld-card {
+    flex: 1;
+    background: #1b273b;
+    padding: 30px;
+    border-radius: 12px;
+    border-top: 4px solid var(--accent-yellow);
+}
+.compliance-card h3, .ld-card h3 {
+    color: var(--text-heading);
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+.compliance-card ul, .ld-card ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.outcome-text {
+    color: #90a4ae;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* --- 9. ENGAGEMENT MODELS --- */
+.engagement-models {
+    background-color: var(--primary-dark);
+    padding-top: 50px;
+}
+.models-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+.model-card {
+    background: var(--secondary-dark);
+    padding: 20px;
+    border-radius: 10px;
+    border-bottom: 3px solid var(--accent-yellow);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.model-card:hover {
+    transform: translateY(-5px);
+}
+.model-card h3 {
+    color: var(--accent-yellow);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.model-card p {
+    font-size: 14px;
+    color: #90a4ae;
+}
+
+/* --- 10. INDUSTRY EXPERTISE --- */
+.industry-expertise {
+    padding-top: 50px;
+}
+.industry-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.chip {
+    background: var(--accent-yellow);
+    color: var(--primary-dark);
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+.chip:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 199, 0, 0.4);
+}
+
+/* --- (Sections 11-14: Story, M/V, Values, Specialists remain the same) --- */
+
+/* --- 11. OUR STORY – WHO WE ARE --- */
+.story {
+    padding: 100px 40px;
+}
+.story-content {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+.story-text {
+    flex: 1;
+}
+.story-text h2 {
+    color: var(--accent-yellow);
+    margin-bottom: 25px;
+}
+.story-text p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.story-visual {
+    flex: 1;
+    min-height: 400px;
+    background-color: var(--secondary-dark);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.visual-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 18px;
+    color: #4a5568;
+}
+
+/* --- 12. MISSION & VISION --- */
+.mv-section {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 80px 40px;
+}
+.mv-card {
+  flex: 1;
+  max-width: 500px;
+  padding: 40px;
+  background: var(--secondary-dark);
+  border-radius: 12px;
+  color: var(--text-light);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  border-left: 4px solid var(--accent-yellow); 
+  transition: transform 0.3s ease;
+}
+.mv-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 199, 0, 0.2);
+    border-color: rgba(255, 199, 0, 0.3);
+}
+.mv-card h3 {
+  color: var(--accent-yellow);
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+/* --- 13. CORE VALUES --- */
+.values-section {
+    padding: 100px 40px;
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.value-card {
+  background: var(--secondary-dark);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 199, 0, 0.1);
+}
+.icon {
+  font-size: 36px;
+  color: var(--accent-yellow);
+  margin-bottom: 15px;
+}
+.value-card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.value-card p {
+    color: #a0aec0;
+    font-size: 15px;
+}
+
+/* --- 14. OUR SPECIALISTS (Meet the Team) --- */
+.specialists-section {
+    padding: 100px 40px;
+    background-color: var(--secondary-dark);
+}
+
+.specialists-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.specialist-card {
+    background: var(--primary-dark);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.specialist-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255, 199, 0, 0.3);
+    border-color: rgba(255, 199, 0, 0.3);
+}
+
+.photo-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--accent-yellow);
+    box-shadow: 0 0 15px rgba(255, 199, 0, 0.5);
+}
+
+/* Photo Placeholder Styles */
+.photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #1a2a47;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a5568;
+    font-size: 14px;
+    font-weight: 600;
+}
+.ceo { background-color: #ff910033; }
+.cto { background-color: #008cff33; }
+.talent { background-color: #00ff7333; }
+.ops { background-color: #e200ff33; }
+.cso { background-color: #ff000033; }
+
+
+.specialist-info h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: var(--text-heading);
+}
+
+.specialist-info .role {
+    font-size: 14px;
+    color: var(--accent-yellow);
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.specialist-info .quote {
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-light);
+    height: 4.5em; /* Fix height for display consistency */
+    overflow: hidden;
+}
+
+/* --- FINAL CTA --- */
+.final-cta {
+  text-align: center;
+  padding: 100px 40px;
+}
+.final-cta h2 {
+  font-size: 38px;
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Responsive Design --- */
+
+@media (max-width: 1200px) {
+    .specialists-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .roles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .models-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .offshore-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .metrics-grid, .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .metric-card:not(:last-child)::after {
+        display: none;
+    }
+    .story-content {
+        flex-direction: column;
+    }
+    .story-visual {
+        min-height: 300px;
+        width: 100%;
+    }
+    .mv-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mv-card {
+        width: 100%;
+    }
+    .specialists-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+    .value-list {
+        grid-template-columns: 1fr;
+    }
+    .compliance-ld-grid {
+        flex-direction: column;
+    }
+    .mobility-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .models-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .sliding-text-container {
+        min-width: 100%; 
+        display: block;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 60px 20px;
+    }
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .metrics-grid, .values-grid, .specialists-grid, .models-grid {
+        grid-template-columns: 1fr;
+    }
+    .cta-buttons {
+        flex-direction: column;
+    }
+    .section-title {
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+}

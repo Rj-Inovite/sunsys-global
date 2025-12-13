@@ -1,0 +1,369 @@
+/* --- Global Styles --- */
+:root {
+    --dark-bg: #000000;
+    --form-bg: rgba(2, 2, 2, 0.95); 
+    --primary-color: #00e0ff; /* Bright cyan/teal for highlights */
+    --text-color: #ffffff;
+    --secondary-text: #cccccc;
+    --error-color: #ff4d4f;
+    --skew-width: 35%; /* Control the width of the skewed transition area */
+    --sparkle-size: 5px; /* Size of the sparkle dots */
+    --sparkle-color: #00ffff; /* Brighter cyan for sparkle */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden; 
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+    background-image: linear-gradient(135deg, #001f3f, #000000);
+    padding: 0; 
+    overflow: hidden; 
+}
+
+/* --- Global Logo/Title --- */
+.global-logo {
+    position: fixed; 
+    top: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+    z-index: 10; 
+    text-transform: uppercase;
+}
+
+/* --- Dynamic Highlight Effect (Cursor Follow) --- */
+.highlight-effect {
+    position: fixed; 
+    width: 60vh;
+    height: 60vh;
+    background: radial-gradient(circle, var(--primary-color) 0%, transparent 60%);
+    opacity: 0.1;
+    pointer-events: none;
+    transition: transform 0.1s linear; 
+    z-index: 0;
+    margin-left: -30vh; 
+    margin-top: -30vh; 
+}
+
+/* --- Form Container --- */
+.form-box-container {
+    position: relative;
+    width: 100%;
+    height: 100%; 
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* --- Form Panels (Login and Register) --- */
+.form-panel {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+    transition: transform 1.2s cubic-bezier(0.5, 0.0, 0.0, 1.0), 
+                clip-path 1.2s cubic-bezier(0.5, 0.0, 0.0, 1.0);
+                
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px; 
+    box-sizing: border-box;
+    /* Remove background from panel, let the inner wrapper handle it */
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+/* --- Sparkling Border Wrapper --- */
+.sparkle-border-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--form-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 1px; /* To allow the pseudo-element border to show inside */
+    z-index: 5;
+    /* Ensures the wrapper centers the content within the panel's flex context */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Sparkling Border Effect (Pseudo-element) --- */
+.sparkle-border-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    /* Create the gradient border */
+    background: linear-gradient(135deg, 
+        rgba(0, 224, 255, 0.8) 0%, 
+        rgba(0, 224, 255, 0.1) 50%, 
+        rgba(0, 224, 255, 0.8) 100%);
+    
+    /* Animation: Moves the gradient around the border */
+    background-size: 300% 300%;
+    animation: gradient-sparkle 4s linear infinite;
+    border-radius: 10px;
+}
+
+/* Keyframes for the gradient movement */
+@keyframes gradient-sparkle {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- Form Content (Resides inside sparkle wrapper) --- */
+.form-content {
+    width: 100%;
+    /* Keep padding-top high enough to clear the fixed logo */
+    padding: 150px 20px 20px 20px; 
+    background-color: var(--form-bg); /* Apply solid background here */
+    border-radius: 9px; /* Slightly smaller radius to show the border */
+    box-sizing: border-box;
+    /* Remove redundant max-width since the wrapper controls it */
+}
+
+/* --- Initial Positions and CLIP-PATH for Panels (Desktop) --- */
+/* The panel handles the slide transition, the inner wrapper (sparkle-border-wrapper) remains static relative to the panel */
+
+.login-panel {
+    transform: translateX(0%);
+    z-index: 2;
+    clip-path: polygon(0 0, calc(100% - var(--skew-width)) 0, 100% 100%, 0% 100%); 
+}
+.login-panel .panel-title {
+    text-align: left; 
+}
+
+.register-panel {
+    transform: translateX(100%); 
+    z-index: 1;
+    clip-path: polygon(var(--skew-width) 0, 100% 0, 100% 100%, 0% 100%);
+}
+.register-panel .panel-title {
+    text-align: right; 
+}
+
+/* --- State: Registration Mode Active (Desktop) --- */
+
+.form-box-container.register-mode .login-panel {
+    transform: translateX(-100%); 
+    clip-path: polygon(0 0, var(--skew-width) 0, calc(100% - var(--skew-width)) 100%, 0% 100%);
+}
+
+.form-box-container.register-mode .register-panel {
+    transform: translateX(0%); 
+    z-index: 3;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, var(--skew-width) 100%);
+}
+
+/* --- Form Elements Styling (Unchanged) --- */
+
+.panel-title {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px rgba(0, 224, 255, 0.7);
+    text-transform: uppercase;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group-half {
+    width: calc(50% - 10px);
+    display: inline-block;
+}
+.input-group-half:nth-child(3) { 
+    margin-right: 20px; 
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-color);
+    font-size: 1em;
+    transition: border-bottom-color 0.3s, box-shadow 0.3s;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none;
+    cursor: pointer;
+}
+
+.input-group select {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2300e0ff'><polygon points='0,0 10,0 5,10'/></svg>") no-repeat right 10px center;
+    background-size: 8px;
+    padding-right: 30px; 
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-bottom-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 224, 255, 0.5);
+}
+
+.input-group input::placeholder,
+.input-group select option[value=""] {
+    color: var(--secondary-text);
+    opacity: 0.7;
+}
+
+.input-group select option {
+    color: var(--text-color);
+    background-color: var(--form-bg);
+}
+
+.action-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg, #0088aa, var(--primary-color));
+    border: none;
+    border-radius: 5px;
+    color: var(--dark-bg);
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.switch-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: var(--secondary-text);
+}
+
+.switch-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.switch-text a:hover {
+    color: #80f0ff;
+    text-decoration: underline;
+}
+
+.status-message {
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 224, 255, 0.1);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    font-size: 0.9em;
+}
+
+.success-message {
+    background-color: rgba(144, 238, 144, 0.2); /* Light green background */
+    color: #32CD32; /* Lime green text */
+    border: 2px solid #32CD32; /* Lime green border */
+    font-weight: bold;
+    font-size: 1em;
+}
+
+/* Special styling for error messages */
+.status-message:not(.login-mode) { 
+    background-color: rgba(255, 77, 79, 0.1);
+    color: var(--error-color);
+    border-color: var(--error-color);
+}
+
+
+/* --- MOBILE RESPONSIVENESS (Minimized Size) --- */
+
+@media (max-width: 768px) {
+    .global-logo {
+        font-size: 1.8rem;
+        top: 20px;
+        letter-spacing: 3px;
+    }
+
+    .form-panel {
+        clip-path: none !important; 
+        padding: 0 20px; 
+        /* Center form panel contents vertically in the middle of the screen */
+        align-items: flex-start; 
+        padding-top: 20%; /* Pushes content down a bit */
+    }
+
+    /* MINIMIZE SIZE on mobile by limiting the wrapper width */
+    .sparkle-border-wrapper {
+        width: 100%;
+        max-width: 380px; /* Limits the size of the form box */
+    }
+    
+    .form-content {
+        padding: 100px 20px 20px 20px; /* Adjusted padding-top for mobile safe zone */
+    }
+
+    .panel-title {
+        text-align: center !important;
+        font-size: 1.6em;
+    }
+    
+    .input-group-half {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .input-group-half:nth-child(3) {
+        margin-right: 0; 
+    }
+    
+    /* Mobile State: Simple Opacity/Translate Transition (Enhanced for smoothness) */
+    .login-panel {
+        /* ... transition properties remain the same ... */
+    }
+    .register-panel {
+        /* ... transition properties remain the same ... */
+    }
+
+    /* Mobile State: Registration Mode Active */
+    .form-box-container.register-mode .login-panel {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    .form-box-container.register-mode .register-panel {
+        transform: translateX(0%);
+        opacity: 1;
+        z-index: 3;
+    }
+
+    .highlight-effect {
+        display: none;
+    }
+}

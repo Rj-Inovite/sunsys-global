@@ -1,0 +1,530 @@
+/* home.css */
+
+/* --- Variables and Global Styles (Dark Theme) --- */
+:root {
+    --color-background: #121212; /* Very Dark Gray/Black */
+    --color-surface: #1e1e1e;    /* Slightly lighter surface for cards/sections */
+    --color-text-primary: #ffffff; /* White text */
+    --color-text-secondary: #cccccc; /* Light gray text */
+    --color-highlight: #FFD700; /* Yellow highlight (Gold) for title and thin border */
+    --color-accent-dark: #ffffff; /* White for borders/accents to minimize yellow */
+    --color-video-overlay: rgba(0, 0, 0, 0.7); /* Dark overlay for text readability */
+    --spacing-lg: 3rem;
+    --spacing-md: 1.5rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif; /* Recommended modern font */
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+}
+
+.home-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden; /* Important for clean animations */
+}
+
+/* --- Utility Classes --- */
+
+.section-padding {
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.highlight-text {
+    color: var(--color-highlight);
+    font-weight: 600;
+}
+
+/* --- Buttons --- */
+
+.btn {
+    padding: 0.75rem 1.75rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: var(--spacing-md);
+}
+
+.primary-btn {
+    background-color: var(--color-highlight);
+    color: var(--color-surface);
+}
+
+.primary-btn:hover {
+    background-color: #ffe066; /* Slightly brighter hover */
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4); /* Use gold shadow */
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--color-highlight);
+    border: 2px solid var(--color-highlight);
+}
+
+.secondary-btn:hover {
+    background-color: var(--color-highlight);
+    color: var(--color-surface);
+}
+
+/* --- 1. Hero Section (Video Banner) --- */
+
+.hero-section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem var(--spacing-md);
+    /* Removed old gradient background, video handles it */
+    background: var(--color-background); 
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Below the content and overlay */
+}
+
+/* Overlay to ensure text readability on the video */
+.hero-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-video-overlay);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3; /* Above the video and overlay */
+    max-width: 900px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-md);
+    overflow: hidden; 
+    white-space: nowrap; 
+    border-right: .15em solid var(--color-highlight); /* Blinking cursor */
+    box-sizing: border-box; 
+    color: var(--color-text-primary); /* Ensure contrast on dark overlay */
+}
+
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-services {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.service-tag {
+    /* Kept the colors darker for tags to ensure they don't overpower the hero */
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: var(--color-highlight);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid var(--color-accent-dark);
+}
+
+.hero-actions {
+    margin-bottom: 2rem;
+}
+
+.hero-trust p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+}
+
+/* --- 2. "Why Global Companies Choose SUNSYS" Section --- */
+.why-sunsys-section {
+    text-align: center;
+}
+
+.why-sunsys-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.why-sunsys-card {
+    background-color: var(--color-surface);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid var(--color-highlight); /* Use highlight color */
+}
+
+.why-sunsys-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- 3. Talent Quality Proof Section --- */
+.talent-quality-section {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    gap: 3rem;
+    background-color: #0d0d0d; 
+    text-align: left;
+}
+
+.talent-quality-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.talent-quality-image-container {
+    flex: 1;
+    min-width: 300px;
+    height: 400px; 
+    /* Placeholder URL updated to reflect new highlight color */
+    background: url('https://via.placeholder.com/600x400/FFD700/121212?text=Elite+Talent') center center/cover no-repeat;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.talent-quality-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(13, 13, 13, 0.8) 0%, rgba(13, 13, 13, 0) 100%);
+}
+
+
+.talent-proof-details {
+    margin-top: 2rem;
+}
+
+.talent-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.talent-tag {
+    background-color: var(--color-accent-dark);
+    color: var(--color-text-primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--color-accent-dark); /* Color fix */
+}
+
+.talent-stats-strip {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 5px solid var(--color-highlight);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+
+/* --- 4. Technology Stack Section --- */
+.tech-stack-section {
+    text-align: center;
+}
+
+.tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.tech-category-card {
+    background-color: var(--color-surface);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-accent-dark);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tech-category-card h3 {
+    font-size: 1.6rem;
+    color: var(--color-highlight);
+    margin-bottom: 1.5rem;
+}
+
+.tech-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.tech-icon-tag {
+    background-color: var(--color-accent-dark);
+    color: var(--color-text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid var(--color-accent-dark); /* Color fix */
+}
+
+/* --- 5. "How It Works" (Simple Process Flow) --- */
+.how-it-works-section {
+    text-align: center;
+    background-color: #0d0d0d;
+}
+
+.process-flow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.process-step-card {
+    background-color: var(--color-surface);
+    padding: 2rem;
+    border-radius: 12px;
+    position: relative;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid var(--color-highlight);
+}
+
+.step-number {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    /* Color fix: Use transparent version of highlight color */
+    color: rgba(255, 215, 0, 0.2); 
+    z-index: 0;
+}
+
+.process-step-card h3 {
+    font-size: 1.5rem;
+    color: var(--color-highlight);
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.process-step-card p {
+    color: var(--color-text-secondary);
+    position: relative;
+    z-index: 1;
+}
+
+/* --- 6. Client Logos / Social Proof Section --- */
+.client-logos-section {
+    text-align: center;
+}
+
+.client-logos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.client-logo-card {
+    background-color: var(--color-surface);
+    padding: 1.2rem 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-accent-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.client-logo-card:hover {
+    transform: translateY(-3px);
+    background-color: #2a2a2a;
+}
+
+.client-region {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+
+/* --- 7. CTA Section --- */
+
+.cta-section {
+    text-align: center;
+    padding: 5rem var(--spacing-md);
+    background-color: var(--color-surface);
+    border-top: 2px solid var(--color-accent-dark);
+}
+
+.cta-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+}
+
+.footer-note {
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--color-background);
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+
+/* --- Responsiveness (Mobile First) --- */
+
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .talent-quality-image-overlay {
+        /* Mobile version gradient */
+        background: linear-gradient(to top, rgba(13, 13, 13, 0.8) 0%, rgba(13, 13, 13, 0) 100%);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    .stat-count {
+        font-size: 2.5rem;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .talent-quality-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .talent-quality-image-container {
+        width: 100%;
+        height: 300px;
+    }
+    .talent-quality-image-overlay {
+        background: linear-gradient(to top, rgba(13, 13, 13, 0.8) 0%, rgba(13, 13, 13, 0) 100%);
+    }
+
+    .talent-tags {
+        justify-content: center;
+    }
+
+    .talent-stats-strip {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    .hero-services {
+        justify-content: center; /* Center services on smaller phones */
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    .why-sunsys-grid, .tech-stack-grid, .process-flow-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,322 @@
+/* --- Variables and Global Styles --- */
+:root {
+    --color-background: #121212; 
+    --color-surface: #1e1e1e;    
+    --color-text-primary: #ffffff; 
+    --color-text-secondary: #a0a0a0; 
+    --color-highlight: #FFD700; /* Yellow highlight (Gold) */
+    --color-accent-dark: #ccaa00; /* Darker Gold for borders/accents */
+    --spacing-lg: 4rem; /* Increased spacing for better visual separation */
+    --spacing-md: 2rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+}
+
+.why-us-page {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1400px;
+    overflow: hidden; /* For smooth animations */
+}
+
+/* --- Global Titles --- */
+.section-main-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    padding-top: var(--spacing-md);
+    color: var(--color-text-primary);
+}
+
+
+/* --- Header Section --- */
+.header-section {
+    padding: 6rem var(--spacing-md) 4rem;
+    text-align: center;
+    background: linear-gradient(180deg, #080808 0%, var(--color-background) 100%);
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+    max-width: 800px;
+    margin: 0.5rem auto 0;
+}
+
+.highlight-text {
+    color: var(--color-highlight);
+    font-weight: 800;
+}
+
+/* --- HOW WE WORK WITH YOU Section (Process Flow) --- */
+.how-it-works-section {
+    padding: var(--spacing-lg) var(--spacing-md);
+    background-color: var(--color-background);
+}
+
+.section-tagline {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.process-flow-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.process-step-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Above the connector line */
+}
+
+.step-number-glow {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--color-highlight);
+    display: block;
+    margin-bottom: 0.5rem;
+    /* Adding a subtle glow effect */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); 
+}
+
+.step-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.step-detail {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+}
+
+/* Connector Line (Horizontal for Desktop) */
+.process-flow-container::before {
+    content: '';
+    position: absolute;
+    top: 40px; /* Aligns with the middle of the number/icon area */
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(to right, 
+        var(--color-highlight) 0%, 
+        var(--color-accent-dark) 50%, 
+        var(--color-highlight) 100%
+    );
+    z-index: 1;
+}
+
+
+/* --- Benefits Grid Section (3x2 Layout) --- */
+
+.benefits-section {
+    padding: var(--spacing-lg) var(--spacing-md);
+    background-color: var(--color-background);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3rem;
+    margin: 3rem auto 0;
+}
+
+.benefit-card {
+    background-color: var(--color-surface);
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: left;
+    height: 100%; 
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--color-accent-dark);
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+    color: var(--color-highlight);
+}
+
+.benefit-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-highlight);
+    margin-bottom: 0.75rem;
+}
+
+.benefit-description {
+    font-size: 1rem;
+    color: var(--color-text-primary);
+}
+
+
+/* --- CTA Section --- */
+
+.cta-section {
+    padding: 4rem var(--spacing-md);
+    text-align: center;
+    background-color: var(--color-surface);
+    border-top: 2px solid var(--color-accent-dark);
+}
+
+.cta-text {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-primary);
+}
+
+.cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--color-highlight);
+    color: var(--color-background);
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+
+/* --- Responsiveness (Tablet and Mobile) --- */
+
+@media (max-width: 1024px) {
+    .page-title {
+        font-size: 2.5rem;
+    }
+    .page-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    /* Process Flow */
+    .process-flow-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .process-flow-container::before {
+        /* Hide horizontal connector */
+        content: none; 
+    }
+    
+    .process-step-card {
+        flex: 0 0 45%; /* Two cards per row */
+        margin-bottom: 1.5rem;
+    }
+
+    /* Benefits Grid */
+    .section-main-title {
+        font-size: 2.2rem;
+    }
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 2rem;
+    }
+    .benefit-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-section {
+        padding-top: 4rem;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+    .page-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Process Flow (One card per row) */
+    .process-flow-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+    .process-step-card {
+        width: 100%;
+        max-width: 350px; /* Constrain size on narrow screens */
+        margin-bottom: 0;
+        border-radius: 0;
+        border: none;
+        border-left: 3px solid var(--color-accent-dark); /* Vertical connector */
+        padding: 1rem 1.5rem;
+        text-align: left;
+    }
+    .process-step-card:last-child {
+        border-left: none; /* Remove connector from the last one in the flow */
+    }
+    .step-number-glow {
+        position: absolute;
+        left: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2.5rem;
+        /* Reverting text-align inside the card for mobile */
+        display: block;
+        width: auto;
+    }
+    
+    /* Benefits Grid */
+    .section-main-title {
+        font-size: 1.8rem;
+    }
+    .benefits-grid {
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+    .benefit-card {
+        text-align: left;
+    }
+    .benefit-icon {
+        margin: 0;
+    }
+    .cta-text {
+        font-size: 1.5rem;
+    }
+    .cta-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+    }
+}
