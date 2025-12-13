@@ -1,7 +1,7 @@
 // File: App.jsx (Final and Complete)
 
 import { useState, useEffect } from 'react';
-import "./About.css";
+import "./about.css";
 import { motion } from "framer-motion";
 import {
   FiZap, FiTarget, FiStar, FiGlobe, FiCheckCircle, FiShield,
