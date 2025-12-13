@@ -6,17 +6,14 @@ import homeVideo from '../assets/images/home.mp4';
 // --- Data Structures (for cleaner component code) ---
 
 const whySunsysFeatures = [
-  { icon: '⚡', title: 'Hire in 7–14 Days', description: 'Pre-vetted engineers, ready to deploy.' },
-  { icon: '🛡', title: '100% Legal & Compliance Ready', description: 'POSH, payroll, contracts, local labor laws.' },
-  { icon: '🌐', title: 'Global Time-Zone Alignment', description: 'Engineers aligned to US, EU, APAC hours.' },
-  { icon: '💸', title: '40–60% Cost Savings', description: 'Compared to local hiring.' },
+  { title: 'Hire in 7–14 Days', description: 'Pre-vetted engineers, ready to deploy.' },
+  { title: '100% Legal & Compliance Ready', description: 'POSH, payroll, contracts, local labor laws.' },
+  {  title: 'Global Time-Zone Alignment', description: 'Engineers aligned to US, EU, APAC hours.' },
+  {  title: '40–60% Cost Savings', description: 'Compared to local hiring.' },
 ];
 
 const talentQualities = [
-  { icon: '🎓', text: 'IIT / NIT / Tier-1 Universities' },
-  { icon: '💼', text: '5+ years average experience' },
-  { icon: '🗣️', text: 'English-proficient, remote-ready' },
-];
+ ];
 
 const talentStats = [
   { count: '500+', label: 'Engineers Deployed' },
@@ -25,7 +22,7 @@ const talentStats = [
 ];
 
 const techStack = {
-  backend: ['Python', 'Java', 'Node.js', 'Django', 'Spring'],
+  backend: ['Python', 'Java', 'Node.js', 'Django'],
   frontend: ['React', 'Angular', 'Next.js'],
   cloudDevOps: ['AWS', 'Azure', 'Docker', 'Kubernetes'],
   dataAI: ['ML', 'Data Engineering', 'AI Tools'],
@@ -317,35 +314,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 7. CTA Section */}
-      <section className="cta-section section-padding">
-        <AnimatedSection variants={fadeIn}>
-          <h2 className="cta-title">Ready to Accelerate Your Innovation Pipeline?</h2>
-          <p className="cta-subtitle">
-            Join hundreds of companies worldwide who trust Sunsys Global to deliver exceptional engineering talent and innovative solutions.
-          </p>
-          <div className="cta-actions">
-            <motion.button
-              className="btn primary-btn"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Start Your Journey
-            </motion.button>
-            <motion.button
-              className="btn secondary-btn"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Talk to an Expert
-            </motion.button>
-          </div>
-        </AnimatedSection>
-      </section>
-
-      <footer className="footer-note">
-        <p>Stay Updated</p>
-      </footer>
+           
     </div>
   );
 };

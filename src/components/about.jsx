@@ -188,7 +188,7 @@ export default function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
-          <TypingText text="Empowering Innovation Through Global Talent" delay={0.5} />
+          <TypingText text=" We are Empowering Innovation Through Global Talent" delay={0.5} />
         </motion.div>
       </section>
 
