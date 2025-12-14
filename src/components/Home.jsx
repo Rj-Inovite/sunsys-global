@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './home.css';
 import image1 from '../assets/images/1.jpg';
 import image2 from '../assets/images/2.jpg';
-import image3 from '../assets/images/3.pdf';
+import image3 from '../assets/images/4.jpg';
 
 // --- Data Structures ---
 
@@ -314,7 +314,7 @@ const Home = () => {
         </div>
         <AnimatedSection variants={slideInFromRight}>
           <div className="talent-quality-image-container">
-            <embed src={image3} type="application/pdf" width="100%" height="400px" />
+            <img src={image3} alt="Talent Quality" width="100%" height="400px" style={{objectFit: 'cover'}} />
             <div className="talent-quality-image-overlay"></div>
           </div>
         </AnimatedSection>

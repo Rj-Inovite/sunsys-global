@@ -609,8 +609,16 @@ body {
         flex-direction: column;
         gap: 1rem;
     }
+    .certificate-card {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .certificate-card .certificate-image-wrapper {
+        height: 100px;
+        max-width: 250px;
+    }
     .certificate-img {
-        max-height: 200px; /* Constrain image height on mobile */
+        max-height: 100px; /* Constrain image height on mobile */
     }
 }
 
