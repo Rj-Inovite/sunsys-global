@@ -123,7 +123,7 @@ const Navbar = () => {
         {`
         .nav-link {
           text-decoration: none;
-          color: ${NAVY_BLUE};
+          color: #000000;
           font-weight: 600;
           padding: 8px 12px;
           display: flex;

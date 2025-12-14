@@ -19,17 +19,17 @@ const ArrowUpIcon = (props) => (
   </svg>
 );
 
-// Instagram Icon
-const InstagramIcon = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+// LinkedIn Icon
+const LinkedInIcon = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
     </svg>
 );
 
-// Facebook Icon
-const FacebookIcon = (props) => (
+// Twitter Icon
+const TwitterIcon = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
     </svg>
 );
 
@@ -47,6 +47,7 @@ const Footer = () => {
   const WHITE = '#FFFFFF';
   const LIGHT_GRAY = 'rgba(255, 255, 255, 0.7)';
   const WHATSAPP_GREEN = '#25D366';
+  const DARK_BACKGROUND = '#121212';
 
   /**
    * Function to smoothly scroll the window to the top of the page.
@@ -61,15 +62,15 @@ const Footer = () => {
   // Placeholder links - REPLACE THESE WITH YOUR ACTUAL URLS
   const SOCIAL_LINKS = {
       whatsapp: 'https://wa.me/1234567890?text=Hello%20sunsys%20techsol', // Replace with your number
-      instagram: 'https://www.instagram.com/sunsystechnol/', // Replace with your Instagram URL
-      facebook: 'https://www.facebook.com/sunsystechnol/', // Replace with your Facebook URL
-      email: 'mailto:info@sunsystechsol.com', // Replace with your email address
+      linkedin: 'https://www.linkedin.com/company/sunsystechsol-pvt-ltd/', // Replace with your LinkedIn URL
+      twitter: 'https://twitter.com/sunsystechnol/', // Replace with your Twitter URL
+      email: 'mailto:admin@sunsysglobal.com', // Replace with your email address
   };
 
   // --- Inline Styles for Structure (Static properties) ---
   const footerStyle = {
-    backgroundColor: WHITE,
-    color: NAVY_BLUE,
+    backgroundColor: DARK_BACKGROUND,
+    color: WHITE,
     padding: '30px 40px',
     marginTop: '50px',
     display: 'flex',
@@ -114,14 +115,14 @@ const Footer = () => {
           /* General Link and Icon Hover Effects */
           .footer-icon-link {
             display: inline-block;
-            color: ${LIGHT_GRAY};
+            color: ${WHITE};
             transition: transform 0.3s ease, color 0.3s ease;
             font-size: 24px;
             margin-right: 15px;
           }
 
           .footer-icon-link:hover {
-            color: ${WHITE};
+            color: #CCCCCC;
             transform: scale(1.1);
           }
           
@@ -141,27 +142,27 @@ const Footer = () => {
             min-width: 180px;
           }
 
-          /* Ensure headers are NAVY_BLUE */
+          /* Ensure headers are white */
           .footer-section h4 {
             font-size: 1.1em;
             margin-bottom: 15px;
-            color: ${NAVY_BLUE};
-            border-bottom: 2px solid ${NAVY_BLUE};
+            color: ${WHITE};
+            border-bottom: 2px solid ${WHITE};
             padding-bottom: 5px;
             display: inline-block;
           }
 
-          /* Ensure all text/links are navy blue */
+          /* Ensure all text/links are white */
           .footer-section p, .footer-section a {
             font-size: 0.9em;
-            color: ${NAVY_BLUE};
+            color: ${WHITE};
             text-decoration: none;
             line-height: 1.8;
             display: block;
           }
 
           .footer-section a:hover {
-            color: ${NAVY_BLUE};
+            color: ${WHITE};
           }
           
           /* Responsive adjustments for mobile */
@@ -206,12 +207,12 @@ const Footer = () => {
             </a>
             
             {/* Scroll Up Button (Next to WhatsApp) */}
-            <button 
+            <button
                 style={{
                     ...utilityButtonStyle,
-                    backgroundColor: WHITE,
-                    color: NAVY_BLUE,
-                }} 
+                    backgroundColor: DARK_BACKGROUND,
+                    color: WHITE,
+                }}
                 onClick={scrollToTop}
                 aria-label="Scroll to Top"
                 title="Scroll to Top"
@@ -239,14 +240,14 @@ const Footer = () => {
                 <h4>Connect & Follow</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <a href={SOCIAL_LINKS.email} title="Email Us">
-                        <EmailIcon style={{ marginRight: '5px' }} /> info@sunsystechsol.com
+                        <EmailIcon style={{ marginRight: '5px' }} /> admin@sunsysglobal.com
                     </a>
                     <div style={{ display: 'flex', justifyContent: 'flex-start', paddingTop: '5px' }}>
-                        <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="footer-icon-link" title="Instagram">
-                            <InstagramIcon />
+                        <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="footer-icon-link" title="LinkedIn">
+                            <LinkedInIcon />
                         </a>
-                        <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="footer-icon-link" title="Facebook">
-                            <FacebookIcon />
+                        <a href={SOCIAL_LINKS.twitter} target="_blank" rel="noopener noreferrer" className="footer-icon-link" title="Twitter">
+                            <TwitterIcon />
                         </a>
                     </div>
                 </div>
